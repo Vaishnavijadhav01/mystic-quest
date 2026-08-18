@@ -1,0 +1,144 @@
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#hud-top-left {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Health orb: circular, glass-like, fills bottom-up like liquid */
+.health-orb {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #2a2438, #14111f 70%);
+  border: 2px solid var(--stone-light);
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.6),
+    0 0 16px rgba(111, 227, 212, 0.15);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.health-orb-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background: linear-gradient(180deg, #ff8b7d 0%, var(--danger) 55%, #b23a4c 100%);
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.health-orb-shine {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  width: 16px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  filter: blur(1px);
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hp-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--parchment);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.xp-bar-track {
+  width: 120px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(232, 223, 200, 0.15);
+  overflow: hidden;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--amber-dim), var(--amber));
+  transition: width 0.3s ease-out;
+}
+
+#hud-top-right {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.area-label {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--crystal);
+  text-shadow: 0 0 12px var(--crystal-glow);
+  padding: 4px 14px;
+  background: rgba(18, 16, 27, 0.55);
+  border: 1px solid rgba(111, 227, 212, 0.25);
+  border-radius: 20px;
+}
+
+.coin-counter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(18, 16, 27, 0.55);
+  border: 1px solid rgba(242, 161, 84, 0.3);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.coin-icon {
+  color: var(--amber);
+  font-size: 10px;
+  filter: drop-shadow(0 0 4px rgba(242, 161, 84, 0.6));
+}
+
+.hud-toast {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--crystal);
+  text-shadow: 0 0 16px var(--crystal-glow), 0 2px 6px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.hud-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

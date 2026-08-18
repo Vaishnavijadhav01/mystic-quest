@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mystic Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/hud.css" />
+<link rel="stylesheet" href="css/menu.css" />
+</head>
+<body>
+
+  <div id="game-container">
+    <canvas id="game-canvas" width="960" height="540"></canvas>
+
+    <!-- HUD overlay -->
+    <div id="hud" class="hidden">
+      <div id="hud-top-left">
+        <div class="health-orb">
+          <div id="health-fill" class="health-orb-fill"></div>
+          <div class="health-orb-shine"></div>
+        </div>
+        <div class="stat-block">
+          <div id="hp-text" class="hp-text">100 / 100</div>
+          <div class="xp-bar-track">
+            <div id="xp-fill" class="xp-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="hud-top-right">
+        <div class="area-label">
+          <span id="area-name">Village</span>
+        </div>
+        <div class="coin-counter">
+          <span class="coin-icon" aria-hidden="true">&#9679;</span>
+          <span id="coin-count">0</span>
+        </div>
+      </div>
+
+      <div id="hud-toast" class="hud-toast"></div>
+    </div>
+
+    <!-- Start screen -->
+    <div id="start-screen" class="overlay-screen">
+      <div class="overlay-panel start-panel">
+        <div class="crystal-glyph" aria-hidden="true"></div>
+        <h1 class="game-title">Mystic Quest</h1>
+        <p class="game-subtitle">The village crystal has been stolen. Recover it before dusk consumes what's left of the light.</p>
+        <button id="start-button" class="primary-button">Begin Journey</button>
+        <div class="controls-hint">
+          <div class="control-row"><span class="key">W A S D</span><span>Move</span></div>
+          <div class="control-row"><span class="key">Space</span><span>Attack</span></div>
+          <div class="control-row"><span class="key">Esc</span><span>Pause</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pause menu -->
+    <div id="pause-screen" class="overlay-screen hidden">
+      <div class="overlay-panel pause-panel">
+        <h2 class="pause-title">Paused</h2>
+        <button id="resume-button" class="primary-button">Resume</button>
+        <button id="restart-button" class="secondary-button">Restart</button>
+      </div>
+    </div>
+
+    <div id="loading-hint" class="loading-hint">Press Esc anytime to pause</div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
